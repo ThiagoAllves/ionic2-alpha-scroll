@@ -202,7 +202,8 @@ export class IonAlphaScroll {
 
   highlightLetter(letter: string) {
     if (!this.highlight) return;
-
+    console.log('trigger');
+    
     let sidebarLetterElements: any = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
     for (var i = 0; i < sidebarLetterElements.length; i++) {
       sidebarLetterElements[i].classList.remove("selected");
