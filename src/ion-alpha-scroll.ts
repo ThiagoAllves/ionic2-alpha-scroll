@@ -118,11 +118,11 @@ export class IonAlphaScroll {
     if (!letter) {
       const selector: string = '.ion-alpha-scroll ion-item-divider';
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
-
+      console.log('change letter11');
       if (letterDivider) {
         const letterDividerId: string = letterDivider.id;
         letter = letterDividerId.replace('scroll-letter-', '');
-        console.log('change letter');
+        console.log('change letter22');
         
       }
     }

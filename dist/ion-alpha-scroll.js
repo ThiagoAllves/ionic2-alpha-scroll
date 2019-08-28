@@ -92,10 +92,11 @@ var IonAlphaScroll = /** @class */ (function () {
         if (!letter) {
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
+            console.log('change letter11');
             if (letterDivider) {
                 var /** @type {?} */ letterDividerId = letterDivider.id;
                 letter = letterDividerId.replace('scroll-letter-', '');
-                console.log('change letter');
+                console.log('change letter22');
             }
         }
         if (letter) {
