@@ -8,7 +8,7 @@ import {
   SimpleChange
 } from '@angular/core';
 import { CSSEscape } from './util-classes';
-import { Content, Scroll } from 'ionic-angular';
+import { Content, Scroll, Events } from 'ionic-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import * as _ from 'lodash';
 import * as Hammer from 'hammerjs';
@@ -73,7 +73,7 @@ export class IonAlphaScroll {
   alphabet: any = [];
   currentLetter: string;
 
-  constructor(@Host() private _content: Content, private _elementRef: ElementRef, private vcRef: ViewContainerRef) {
+  constructor(@Host() private _content: Content, private _elementRef: ElementRef, private vcRef: ViewContainerRef, private events: Events) {
   }
 
   ngOnInit() {
@@ -125,11 +125,7 @@ export class IonAlphaScroll {
     }
 
     if (letter) {
-      if (this.currentLetter != letter) {
-        this.currentLetter = letter;
-        console.log(letter);
-        
-      }
+      this.triggerChangeLetter(letter);
       const selector: string = '#scroll-letter-' + CSSEscape.escape(letter);
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
 
@@ -139,6 +135,13 @@ export class IonAlphaScroll {
         _scrollContent.scrollTop = offsetY;
         this.highlightLetter(letter);
       }
+    }
+  }
+  triggerChangeLetter(letter: string){
+    if (this.currentLetter != letter) {
+      this.currentLetter = letter;
+      console.log(letter);
+      this.events.publish('onChangeLetter', letter);
     }
   }
 
