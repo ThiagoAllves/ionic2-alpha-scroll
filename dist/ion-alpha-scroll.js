@@ -89,10 +89,6 @@ var IonAlphaScroll = /** @class */ (function () {
     function (letter) {
         if (letter === void 0) { letter = null; }
         if (!letter) {
-            if (this.currentLetter != letter) {
-                this.currentLetter = letter;
-                console.log(letter);
-            }
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
             if (letterDivider) {
@@ -101,6 +97,10 @@ var IonAlphaScroll = /** @class */ (function () {
             }
         }
         if (letter) {
+            if (this.currentLetter != letter) {
+                this.currentLetter = letter;
+                console.log(letter);
+            }
             var /** @type {?} */ selector = '#scroll-letter-' + util_classes_1.CSSEscape.escape(letter);
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
             if (letterDivider) {

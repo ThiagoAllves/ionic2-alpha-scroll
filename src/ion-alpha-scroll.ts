@@ -116,11 +116,6 @@ export class IonAlphaScroll {
 
   alphaScrollGoToList(letter: string = null) {
     if (!letter) {
-      if (this.currentLetter != letter) {
-        this.currentLetter = letter;
-        console.log(letter);
-        
-      }
       const selector: string = '.ion-alpha-scroll ion-item-divider';
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
       if (letterDivider) {
@@ -130,6 +125,11 @@ export class IonAlphaScroll {
     }
 
     if (letter) {
+      if (this.currentLetter != letter) {
+        this.currentLetter = letter;
+        console.log(letter);
+        
+      }
       const selector: string = '#scroll-letter-' + CSSEscape.escape(letter);
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
 
