@@ -214,10 +214,12 @@ export class IonAlphaScroll {
     let sidebarLetterElements: any = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
     for (var i = 0; i < sidebarLetterElements.length; i++) {
       sidebarLetterElements[i].classList.remove("selected");
+      sidebarLetterElements[i].classList.remove("position");
     }
 
     let letterEl: any = this._elementRef.nativeElement.querySelector('#sidebar-letter-' + letter);
     letterEl.classList.add("selected");
+    letterEl.classList.add("position");
   }
 
   trackBySortedItems(index: number, item: any): number {
