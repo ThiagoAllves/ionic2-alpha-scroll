@@ -1,9 +1,10 @@
 import { ElementRef, ViewContainerRef, SimpleChange } from '@angular/core';
-import { Content, Scroll } from 'ionic-angular';
+import { Content, Scroll, Events } from 'ionic-angular';
 export declare class IonAlphaScroll {
     private _content;
     private _elementRef;
     private vcRef;
+    private events;
     _scrollEle: Scroll;
     listData: any;
     key: string;
@@ -14,7 +15,7 @@ export declare class IonAlphaScroll {
     sortedItems: any;
     alphabet: any;
     currentLetter: string;
-    constructor(_content: Content, _elementRef: ElementRef, vcRef: ViewContainerRef);
+    constructor(_content: Content, _elementRef: ElementRef, vcRef: ViewContainerRef, events: Events);
     ngOnInit(): void;
     ngOnChanges(changes: {
         [propertyName: string]: SimpleChange;
@@ -28,6 +29,7 @@ export declare class IonAlphaScroll {
         height: string;
     };
     alphaScrollGoToList(letter?: string): void;
+    triggerChangeLetter(letter: string): void;
     iterateAlphabet(alphabet: any): any[];
     setupHammerHandlers(): void;
     setupScrollHandlers(): void;

@@ -10,10 +10,11 @@ var ionic_angular_1 = require("ionic-angular");
 var _ = require("lodash");
 var Hammer = require("hammerjs");
 var IonAlphaScroll = /** @class */ (function () {
-    function IonAlphaScroll(_content, _elementRef, vcRef) {
+    function IonAlphaScroll(_content, _elementRef, vcRef, events) {
         this._content = _content;
         this._elementRef = _elementRef;
         this.vcRef = vcRef;
+        this.events = events;
         this.highlight = false;
         this.sortedItems = {};
         this.alphabet = [];
@@ -97,10 +98,7 @@ var IonAlphaScroll = /** @class */ (function () {
             }
         }
         if (letter) {
-            if (this.currentLetter != letter) {
-                this.currentLetter = letter;
-                console.log(letter);
-            }
+            this.triggerChangeLetter(letter);
             var /** @type {?} */ selector = '#scroll-letter-' + util_classes_1.CSSEscape.escape(letter);
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
             if (letterDivider) {
@@ -109,6 +107,21 @@ var IonAlphaScroll = /** @class */ (function () {
                 _scrollContent.scrollTop = offsetY;
                 this.highlightLetter(letter);
             }
+        }
+    };
+    /**
+     * @param {?} letter
+     * @return {?}
+     */
+    IonAlphaScroll.prototype.triggerChangeLetter = /**
+     * @param {?} letter
+     * @return {?}
+     */
+    function (letter) {
+        if (this.currentLetter != letter) {
+            this.currentLetter = letter;
+            console.log(letter);
+            this.events.publish('onChangeLetter', letter);
         }
     };
     /**
@@ -230,6 +243,7 @@ var IonAlphaScroll = /** @class */ (function () {
         { type: ionic_angular_1.Content, decorators: [{ type: core_1.Host },] },
         { type: core_1.ElementRef, },
         { type: core_1.ViewContainerRef, },
+        { type: ionic_angular_1.Events, },
     ]; };
     IonAlphaScroll.propDecorators = {
         "_scrollEle": [{ type: core_1.ViewChild, args: [ionic_angular_1.Scroll,] },],
@@ -279,5 +293,7 @@ function IonAlphaScroll_tsickle_Closure_declarations() {
     IonAlphaScroll.prototype._elementRef;
     /** @type {?} */
     IonAlphaScroll.prototype.vcRef;
+    /** @type {?} */
+    IonAlphaScroll.prototype.events;
 }
 //# sourceMappingURL=ion-alpha-scroll.js.map
