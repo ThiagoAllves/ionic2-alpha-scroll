@@ -71,6 +71,7 @@ export class IonAlphaScroll {
 
   sortedItems: any = {};
   alphabet: any = [];
+  currentLetter: string;
 
   constructor(@Host() private _content: Content, private _elementRef: ElementRef, private vcRef: ViewContainerRef) {
   }
@@ -114,16 +115,17 @@ export class IonAlphaScroll {
   }
 
   alphaScrollGoToList(letter: string = null) {
-    console.log('trigger55');
     if (!letter) {
+      if (this.currentLetter != letter) {
+        this.currentLetter = letter;
+        console.log(letter);
+        
+      }
       const selector: string = '.ion-alpha-scroll ion-item-divider';
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
-      console.log('change letter11');
       if (letterDivider) {
         const letterDividerId: string = letterDivider.id;
         letter = letterDividerId.replace('scroll-letter-', '');
-        console.log('change letter22');
-        
       }
     }
 

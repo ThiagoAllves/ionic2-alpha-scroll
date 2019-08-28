@@ -13,6 +13,7 @@ export declare class IonAlphaScroll {
     triggerChange: any;
     sortedItems: any;
     alphabet: any;
+    currentLetter: string;
     constructor(_content: Content, _elementRef: ElementRef, vcRef: ViewContainerRef);
     ngOnInit(): void;
     ngOnChanges(changes: {

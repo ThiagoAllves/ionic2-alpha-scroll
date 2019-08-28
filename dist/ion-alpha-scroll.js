@@ -88,15 +88,16 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function (letter) {
         if (letter === void 0) { letter = null; }
-        console.log('trigger55');
         if (!letter) {
+            if (this.currentLetter != letter) {
+                this.currentLetter = letter;
+                console.log(letter);
+            }
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
-            console.log('change letter11');
             if (letterDivider) {
                 var /** @type {?} */ letterDividerId = letterDivider.id;
                 letter = letterDividerId.replace('scroll-letter-', '');
-                console.log('change letter22');
             }
         }
         if (letter) {
@@ -270,6 +271,8 @@ function IonAlphaScroll_tsickle_Closure_declarations() {
     IonAlphaScroll.prototype.sortedItems;
     /** @type {?} */
     IonAlphaScroll.prototype.alphabet;
+    /** @type {?} */
+    IonAlphaScroll.prototype.currentLetter;
     /** @type {?} */
     IonAlphaScroll.prototype._content;
     /** @type {?} */
