@@ -137,10 +137,10 @@ export class IonAlphaScroll {
       }
     }
   }
+  
   triggerChangeLetter(letter: string){
     if (this.currentLetter != letter) {
       this.currentLetter = letter;
-      console.log(letter);
       this.events.publish('onChangeLetter', letter);
     }
   }

@@ -120,7 +120,6 @@ var IonAlphaScroll = /** @class */ (function () {
     function (letter) {
         if (this.currentLetter != letter) {
             this.currentLetter = letter;
-            console.log(letter);
             this.events.publish('onChangeLetter', letter);
         }
     };
