@@ -129,6 +129,11 @@ export class IonAlphaScroll {
       const selector: string = '#scroll-letter-' + CSSEscape.escape(letter);
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
 
+      let letterElements: any = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
+      for (var i = 0; i < letterElements.length; i++) {
+        letterElements[i].classList.add("event");
+      }
+
       if (letterDivider) {
         const offsetY = letterDivider.offsetTop;
         const _scrollContent: any = this._scrollEle._scrollContent.nativeElement;
@@ -210,16 +215,17 @@ export class IonAlphaScroll {
 
   highlightLetter(letter: string) {
     if (!this.highlight) return;
-    
+    let letterElements: any = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
+      for (var i = 0; i < letterElements.length; i++) {
+        letterElements[i].classList.remove("event");
+      }
     let sidebarLetterElements: any = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
     for (var i = 0; i < sidebarLetterElements.length; i++) {
       sidebarLetterElements[i].classList.remove("selected");
-      sidebarLetterElements[i].classList.remove("position");
     }
 
     let letterEl: any = this._elementRef.nativeElement.querySelector('#sidebar-letter-' + letter);
     letterEl.classList.add("selected");
-    letterEl.classList.add("position");
   }
 
   trackBySortedItems(index: number, item: any): number {

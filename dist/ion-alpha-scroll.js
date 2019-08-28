@@ -101,6 +101,10 @@ var IonAlphaScroll = /** @class */ (function () {
             this.triggerChangeLetter(letter);
             var /** @type {?} */ selector = '#scroll-letter-' + util_classes_1.CSSEscape.escape(letter);
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
+            var /** @type {?} */ letterElements = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
+            for (var /** @type {?} */ i = 0; i < letterElements.length; i++) {
+                letterElements[i].classList.add("event");
+            }
             if (letterDivider) {
                 var /** @type {?} */ offsetY = letterDivider.offsetTop;
                 var /** @type {?} */ _scrollContent = this._scrollEle._scrollContent.nativeElement;
@@ -210,6 +214,10 @@ var IonAlphaScroll = /** @class */ (function () {
     function (letter) {
         if (!this.highlight)
             return;
+        var /** @type {?} */ letterElements = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
+        for (var /** @type {?} */ i = 0; i < letterElements.length; i++) {
+            letterElements[i].classList.remove("event");
+        }
         var /** @type {?} */ sidebarLetterElements = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
         for (var /** @type {?} */ i = 0; i < sidebarLetterElements.length; i++) {
             sidebarLetterElements[i].classList.remove("selected");
