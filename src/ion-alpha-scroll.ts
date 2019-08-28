@@ -99,7 +99,6 @@ export class IonAlphaScroll {
   }
 
   calculateScrollDimensions() {
-    console.log('trigger77');
     let dimensions = this._content.getContentDimensions();
     return {
       height: dimensions.contentHeight + 'px',
@@ -108,7 +107,6 @@ export class IonAlphaScroll {
   }
 
   calculateDimensionsForSidebar() {
-    console.log('trigger66');
     return {
       top: this._content.contentTop + 'px',
       height: (this._content.getContentDimensions().contentHeight - 20) + 'px'
@@ -124,6 +122,8 @@ export class IonAlphaScroll {
       if (letterDivider) {
         const letterDividerId: string = letterDivider.id;
         letter = letterDividerId.replace('scroll-letter-', '');
+        console.log('change letter');
+        
       }
     }
 
@@ -141,7 +141,6 @@ export class IonAlphaScroll {
   }
 
   iterateAlphabet(alphabet: any) {
-    console.log('trigger44');
     let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let numbers: Array<any> = [];
 
@@ -161,7 +160,6 @@ export class IonAlphaScroll {
   }
 
   setupHammerHandlers() {
-    console.log('trigger33');
     let sidebarEle: HTMLElement = this._elementRef.nativeElement.querySelector('.ion-alpha-sidebar');
 
     if (!sidebarEle) return;
@@ -185,7 +183,6 @@ export class IonAlphaScroll {
   }
 
   setupScrollHandlers() {
-    console.log('trigger22');
     if (!this.highlight) return;
 
     this._scrollEle.addScrollEventListener(($e) => {
@@ -208,7 +205,6 @@ export class IonAlphaScroll {
 
   highlightLetter(letter: string) {
     if (!this.highlight) return;
-    console.log('trigger11');
     
     let sidebarLetterElements: any = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
     for (var i = 0; i < sidebarLetterElements.length; i++) {

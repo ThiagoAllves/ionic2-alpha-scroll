@@ -60,7 +60,6 @@ var IonAlphaScroll = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        console.log('trigger77');
         var /** @type {?} */ dimensions = this._content.getContentDimensions();
         return {
             height: dimensions.contentHeight + 'px',
@@ -74,7 +73,6 @@ var IonAlphaScroll = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        console.log('trigger66');
         return {
             top: this._content.contentTop + 'px',
             height: (this._content.getContentDimensions().contentHeight - 20) + 'px'
@@ -97,6 +95,7 @@ var IonAlphaScroll = /** @class */ (function () {
             if (letterDivider) {
                 var /** @type {?} */ letterDividerId = letterDivider.id;
                 letter = letterDividerId.replace('scroll-letter-', '');
+                console.log('change letter');
             }
         }
         if (letter) {
@@ -119,7 +118,6 @@ var IonAlphaScroll = /** @class */ (function () {
      * @return {?}
      */
     function (alphabet) {
-        console.log('trigger44');
         var /** @type {?} */ str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var /** @type {?} */ numbers = [];
         if (Object.keys(alphabet).length > 0) {
@@ -142,7 +140,6 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        console.log('trigger33');
         var /** @type {?} */ sidebarEle = this._elementRef.nativeElement.querySelector('.ion-alpha-sidebar');
         if (!sidebarEle)
             return;
@@ -170,7 +167,6 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        console.log('trigger22');
         if (!this.highlight)
             return;
         this._scrollEle.addScrollEventListener(function ($e) {
@@ -200,7 +196,6 @@ var IonAlphaScroll = /** @class */ (function () {
     function (letter) {
         if (!this.highlight)
             return;
-        console.log('trigger11');
         var /** @type {?} */ sidebarLetterElements = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
         for (var /** @type {?} */ i = 0; i < sidebarLetterElements.length; i++) {
             sidebarLetterElements[i].classList.remove("selected");
