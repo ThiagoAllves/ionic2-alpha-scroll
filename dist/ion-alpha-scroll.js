@@ -89,7 +89,6 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function (letter) {
         if (letter === void 0) { letter = null; }
-        this.events.publish('startEventScroll', '');
         if (!letter) {
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
@@ -109,7 +108,6 @@ var IonAlphaScroll = /** @class */ (function () {
                 this.highlightLetter(letter);
             }
         }
-        this.events.publish('endEventScroll', '');
     };
     /**
      * @param {?} letter
