@@ -42,6 +42,7 @@ var IonAlphaScroll = /** @class */ (function () {
      * @return {?}
      */
     function (changes) {
+        console.log('ngOnChanges');
         var /** @type {?} */ tmp = {};
         for (var /** @type {?} */ i = 0; i < this.listData.length; i++) {
             var /** @type {?} */ listValue = _.get(this.listData[i], this.key);
@@ -53,6 +54,7 @@ var IonAlphaScroll = /** @class */ (function () {
         }
         this.alphabet = this.iterateAlphabet(tmp);
         this.sortedItems = tmp;
+        this.events.publish('startEventScroll', '');
     };
     /**
      * @return {?}
@@ -89,6 +91,8 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function (letter) {
         if (letter === void 0) { letter = null; }
+        console.log('alphaScrollGoToList');
+        this.events.publish('startEventScroll', '');
         if (!letter) {
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
@@ -101,10 +105,6 @@ var IonAlphaScroll = /** @class */ (function () {
             this.triggerChangeLetter(letter);
             var /** @type {?} */ selector = '#scroll-letter-' + util_classes_1.CSSEscape.escape(letter);
             var /** @type {?} */ letterDivider = this._elementRef.nativeElement.querySelector(selector);
-            var /** @type {?} */ letterElements = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
-            for (var /** @type {?} */ i = 0; i < letterElements.length; i++) {
-                letterElements[i].classList.add("event");
-            }
             if (letterDivider) {
                 var /** @type {?} */ offsetY = letterDivider.offsetTop;
                 var /** @type {?} */ _scrollContent = this._scrollEle._scrollContent.nativeElement;
@@ -112,6 +112,7 @@ var IonAlphaScroll = /** @class */ (function () {
                 this.highlightLetter(letter);
             }
         }
+        this.events.publish('endEventScroll', '');
     };
     /**
      * @param {?} letter
@@ -214,10 +215,6 @@ var IonAlphaScroll = /** @class */ (function () {
     function (letter) {
         if (!this.highlight)
             return;
-        var /** @type {?} */ letterElements = this._elementRef.nativeElement.querySelectorAll('ion-item-divider');
-        for (var /** @type {?} */ i = 0; i < letterElements.length; i++) {
-            letterElements[i].classList.remove("event");
-        }
         var /** @type {?} */ sidebarLetterElements = this._elementRef.nativeElement.querySelectorAll('.ion-alpha-sidebar li a');
         for (var /** @type {?} */ i = 0; i < sidebarLetterElements.length; i++) {
             sidebarLetterElements[i].classList.remove("selected");
