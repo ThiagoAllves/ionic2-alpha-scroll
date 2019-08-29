@@ -115,7 +115,6 @@ export class IonAlphaScroll {
   }
 
   alphaScrollGoToList(letter: string = null) {
-    this.events.publish('startEventScroll', '');
     if (!letter) {
       const selector: string = '.ion-alpha-scroll ion-item-divider';
       const letterDivider: any = this._elementRef.nativeElement.querySelector(selector);
@@ -137,7 +136,6 @@ export class IonAlphaScroll {
         this.highlightLetter(letter);
       }
     }
-    this.events.publish('endEventScroll', '');
   }
   
   triggerChangeLetter(letter: string){
