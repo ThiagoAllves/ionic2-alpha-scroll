@@ -42,7 +42,6 @@ var IonAlphaScroll = /** @class */ (function () {
      * @return {?}
      */
     function (changes) {
-        console.log('ngOnChanges');
         var /** @type {?} */ tmp = {};
         for (var /** @type {?} */ i = 0; i < this.listData.length; i++) {
             var /** @type {?} */ listValue = _.get(this.listData[i], this.key);
@@ -54,7 +53,6 @@ var IonAlphaScroll = /** @class */ (function () {
         }
         this.alphabet = this.iterateAlphabet(tmp);
         this.sortedItems = tmp;
-        this.events.publish('startEventScroll', '');
     };
     /**
      * @return {?}
@@ -91,7 +89,6 @@ var IonAlphaScroll = /** @class */ (function () {
      */
     function (letter) {
         if (letter === void 0) { letter = null; }
-        console.log('alphaScrollGoToList');
         this.events.publish('startEventScroll', '');
         if (!letter) {
             var /** @type {?} */ selector = '.ion-alpha-scroll ion-item-divider';

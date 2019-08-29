@@ -85,8 +85,6 @@ export class IonAlphaScroll {
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-    console.log('ngOnChanges');
-    
     let tmp: any = {};
     for (let i = 0; i < this.listData.length; i++) {
       let listValue: any = _.get(this.listData[i], this.key);
@@ -99,7 +97,6 @@ export class IonAlphaScroll {
 
     this.alphabet = this.iterateAlphabet(tmp);
     this.sortedItems = tmp;
-    this.events.publish('startEventScroll', '');
   }
 
   calculateScrollDimensions() {
@@ -118,7 +115,6 @@ export class IonAlphaScroll {
   }
 
   alphaScrollGoToList(letter: string = null) {
-    console.log('alphaScrollGoToList');
     this.events.publish('startEventScroll', '');
     if (!letter) {
       const selector: string = '.ion-alpha-scroll ion-item-divider';
